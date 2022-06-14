@@ -8,7 +8,6 @@ default character set utf8
 default collate utf8_general_ci;
 
 use cadastro;
-# OU DOIS CLIQUES NO CADASTRO 
 
 # "DROP DATABASE X" FAZ APAGAR UM BD
 
