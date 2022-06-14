@@ -11,6 +11,10 @@ drop column profissao;
 alter table pessoas
 add profissao varchar(10) after nome;
 
+# NÃO PODE SER NULO, ENTAO ADICIONO UM DEFAULT VAZIO
+alter table pessoas
+modify profissao varchar(20) not null default ' ';
+
 # PRA ADICIONAR COMO PRIMEIRO
 # "ADD COLUMN CODIGO INT FIRST"
 
