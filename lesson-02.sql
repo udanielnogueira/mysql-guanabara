@@ -19,7 +19,7 @@ id int not null auto_increment,
 nome varchar(30) NOT NULL,
 nascimento date, 
 sexo enum('M','F'), # SÓ ACEITO M OU F
-peso decimal(5,2), # DESSES 5, 2 DÍGITOS FICARÃO APÓS A VÍRGULA
+peso decimal(5,2),  # DESSES 5, 2 DÍGITOS FICARÃO APÓS A VÍRGULA
 altura decimal(3,2),
 nacionalidade varchar(20) default 'Brasil', # SE NÃO DIGITAR, POR PADRÃO SERÁ BRASIL
 primary key(id)
