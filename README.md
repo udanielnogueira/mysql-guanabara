@@ -1,2 +1,3 @@
 # MySQL.CursoEmVideo
-🐬 MySQL based on "Curso em Vídeo" classes.
+
+MySQL based on "Curso em Vídeo" classes.
