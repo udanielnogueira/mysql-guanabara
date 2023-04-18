@@ -1,4 +1,4 @@
-create database cadastro02
+create database cadastro
 
 # VOU ADICIONAR DUAS CONSTRAINTS
 # VOU TER UMA CODIFICAÇÃO DE COLLATE
@@ -7,7 +7,7 @@ create database cadastro02
 default character set utf8 
 default collate utf8_general_ci;
 
-use cadastro02;
+use cadastro;
 
 # "DROP DATABASE ..." APAGA UM BD
 
@@ -23,4 +23,4 @@ peso decimal(5,2),  # DESSES 5, 2 DÍGITOS FICARÃO APÓS A VÍRGULA
 altura decimal(3,2),
 nacionalidade varchar(20) default 'Brasil', # SE NÃO DIGITAR, POR PADRÃO SERÁ BRASIL
 primary key(id)
-) default charset = utf8;
+) default charset = utf8; # EVITA PROBLEMAS DE ACENTUAÇÃO

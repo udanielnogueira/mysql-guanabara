@@ -22,19 +22,19 @@ add profissao varchar(10) after nome;
 alter table pessoas
 modify profissao varchar(20) not null default ' ';
 
-# PARA MUDAR O NOME DE UM CAMPO
-# "CHANGE PROFISSAO PROF VARCHAR(20)"
+# PARA MUDAR O TIPO CONSTRAINTS E O NOME DE UM CAMPO
+# "CHANGE COLUMN PROFISSAO PROF VARCHAR(20)"
 
 # RENOMEAR UMA TABELA
 alter table pessoas
-rename to humanos;
+rename to usuarios;
 
 #ADICIONANDO UMA NOVA TABELA
 create table if not exists cursos(
-nome varchar(30) not null unique,
-descricao text,
+nome varchar(30) not null unique, # NÃO VAI DEIXAR COLOCAR DOIS CURSOS COM O MESMO NOME
+descricao text, # "TEXT" É PARA TEXTOS LONGOS
 carga int unsigned,
-totalaulas int unsigned,
+totalaulas int unsigned, # NÃO ACEITA UM NÚMERO NEGATIVO E AINDA ECONOMIZA 1 BYTE
 ano year default '2022'
 ) default charset = utf8;
 
@@ -47,12 +47,12 @@ add idcurso int first;
 alter table cursos
 add primary key(idcurso);
 
-# "DROP TABLE ..." APAGA UMA TABELA
+# "DROP TABLE CURSOS" APAGA A TABELA CURSOS
 
-select * from humanos;
+select * from usuarios;
 
 # COMANDOS DDL (DATA DEFINITION LANGUAGE)
-# "CREATE DATABASE" "CREATE TABLE" 'ALTER TABLE" "DROP TABLE"
+# "CREATE DATABASE" "CREATE TABLE" "ALTER TABLE" "DROP TABLE"
 
 # COMANDOS DML (DATA MANIPULATION LANGUAGE)
 # "INSERT INTO"

@@ -3,10 +3,10 @@
 # C:\xampp\mysql\bin>
 # mysql -u root -p
 
-# show databases;
-# status;
-# use cadastro02
+# show databases
+# status
+# use cadastro
 # show tables
-# desc humanos
-# select * from humanos
+# desc usuarios
+# select * from usuarios
 # exit
