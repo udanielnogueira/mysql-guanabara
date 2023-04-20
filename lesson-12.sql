@@ -50,3 +50,6 @@ select u.nome, c.nome, c.ano from usuarios as u left outer join cursos as c on u
 
 # FAZENDO UM RIGHT JOIN
 select u.nome, c.nome, c.ano from usuarios as u right join cursos as c on u.idcurso = c.idcurso order by u.nome;
+
+# CROSS JOIN
+select * from usuarios cross join cursos;

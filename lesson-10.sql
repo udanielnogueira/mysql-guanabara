@@ -40,4 +40,4 @@ select nome, max(totalaulas) from cursos where ano = 2019; # EXIBINDO COM COLUNA
 select sum(totalaulas) from cursos;
 select avg(totalaulas) from cursos;
 
-select * from cursos; 
+select * from cursos;

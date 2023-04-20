@@ -46,7 +46,7 @@ nacionalidade varchar(20) default 'Brasil'
 ) default charset = utf8; # EVITA PROBLEMAS DE ACENTUAÇÃO
 
 # TAMBÉM PODERIA DEFINIR A PRIMARY KEY NO FINAL DA TABELA
-# PRIMARY KEY (id)
+# PRIMARY KEY (ID)
 
 drop table pessoas;
 
@@ -121,7 +121,7 @@ truncate table cursos;
 # COM O SERVIDOR LIGADO ACESSE O LOCALHOST NO COMPUTADOR
 
 # OPERADORES
-# = != <> < > <= >= between in
+# = != <> < > <= >= BETWEEN IN
 
 # OPERADORES LÓGICOS
 # AND OR
@@ -155,6 +155,7 @@ select distinct nacionalidade from usuarios order by nacionalidade;
 
 # COUNT
 # PARA EXIBIR CONTAGENS
+# QUANTOS VALORES X EXISTEM NAQUELA COLUNA
 select count(*) from cursos;
 select count(*) as 'Cursos acima de 30 aulas' from cursos where qtdaulas >= 30;
 select count(qtdaulas) as 'Cursos acima de 30 aulas' from cursos where qtdaulas >= 30;
@@ -170,7 +171,87 @@ select max(peso) as MaiorPeso from usuarios where nacionalidade = 'Brasil';
 # GROUP BY
 # CRIANDO AGRUPAMENTOS
 # REPARE O USO DOS APELIDOS
+
+# GROUP BY
 select nacionalidade as Países, count(*) as quantidade from usuarios group by nacionalidade order by nacionalidade asc;
 
-select * from cursos;
-select * from usuarios;
+# GROUP BY COM WHERE
+select qtdaulas, count(*) from cursos where id > 1 group by qtdaulas order by qtdaulas asc;
+
+# GROUP BY COM HAVING
+# HAVING É UM COMPLEMENTO DE GROUP BY
+# HAVING SÓ ACEITA O ATRIBUTO USADO NO GROUP BY
+select qtdaulas, count(*) from cursos group by qtdaulas having qtdaulas > 30 order by count(*) asc; # ORDENA PELO COUNT
+
+# GROUP BY COM WHERE E HAVING
+select qtdaulas, count(*) from cursos where id > 1 group by qtdaulas having qtdaulas > 30 order by qtdaulas asc;
+
+# SELECT DENTRO DE OUTRO SELECT
+select avg(qtdaulas) from cursos;
+select qtdaulas, count(*) as 'Qtd de aulas maior que a média' from cursos group by qtdaulas having qtdaulas > (select avg(qtdaulas) from cursos);
+
+# CRIANDO RELAÇÕES COM CHAVES ESTRANGEIRAS
+# VER LESSON 12 E LESSON 13
+
+# CROSS JOIN
+# RETORNA TODOS OS REGISTROS DE AMBAS AS TABELAS
+# SELECT * FROM USUARIOS CROSS JOIN CURSOS;
+
+# SELF JOIN
+# É UM JOIN COMUM MAS A TABELA É UNIDA A SI MESMO
+# SELECT COLUNAS FROM TABELA T1, TABELA T2 WHERE CONDIÇÃO;
+# T1 E T2 SÃO APELIDOS DIFERENTES PARA A MESMA TABELA
+
+# INSERT SELECT
+# COPIA OS DADOS DE UMA TABELA E INSERE EM OUTRA TABELA
+# PRECISA QUE OS TIPOS DAS VARIÁVEIS DA FONTE E DO ALVO SEJA COMPATÍVEIS
+# INSERT INTO TABELA2 SELECT * FROM TABELA1 WHERE CONDIÇÃO;
+
+# COMENTÁRIOS
+-- COMENTÁRIO SIMPLES
+/* COMENTÁRIO DE MÚLTIPLAS LINHAS */
+
+# IFNULL()
+# DEIXA RETORNAR UM VALOR ALTERNATIVO CASO UM VALOR SEJA NULO
+
+# COALESCE()
+# RETORNA O PRIMEIRO VALOR NÃO NULO DA LISTA
+
+# CASE
+# VERIFICA CONDIÇÕES E RETORNA UM VALOR QUANDO A PRIMEIRA CONDIÇÃO É VERDADEIRA
+/*
+CASE
+    WHEN CONDIÇÃO1 THEN RESULTADO1
+    WHEN CONDIÇÃO2 THEN RESULTADO2
+    WHEN CONDIÇÃON THEN RESULTADON
+    ELSE RESULTADO
+END;
+*/
+
+# CHECK
+# RESTRIÇÃO USADA PARA LIMITAR A FAIXA DE VALORES QUE UMA COLUNA ACEITA
+/*
+CREATE TABLE pessoas(
+    id int NOT NULL,
+    sobrenome varchar(255),
+    primeironome varchar(255),
+    idade int,
+    CHECK (idade >= 18)
+);
+*/
+
+# CREATE INDEX
+# CRIA ENDEREÇOS NA TABELA
+# RETORNA OS DADOS DE MANEIRA MAIS RÁPIDA
+# USUÁRIOS NÃO CONSEGUEM VER, OS ENDEREÇOS SÓ DEIXAM AS CONSULTAS MAIS RÁPIDAS
+# ATUALIZAR UMA TABELA COM ENDEREÇOS LEVA MAIS TEMPO QUE ATUALIZAR UMA TABELA SEM ENDEREÇOS
+
+# VIEWS
+# ELA É CRIADA A PARTIR DO COMANDO CREATE VIEW
+# É UMA TABELA VIRTUAL BASEADA NO CONJUNTO DE RESULTADOS DE UMA QUERY (INSTRUÇÃO SQL)
+# AS LINHAS E COLUNAS DA VIEW SÃO GERADAS DINAMICAMENTE NO MOMENTO EM QUE É FEITA UMA REFERÊNCIA A ELA
+# ENTRE SUAS VANTAGENS ESTÃO O REUSO SEGURANÇA E SIMPLIFICAÇÃO DO CÓDIGO
+# BASICAMENTE É UMA TABELA ONDE VOCÊ PODE APRESENTÁ-LA COM NOMES DE COLUNAS DIFERENTES
+
+# TRIGGERS
+# UM GATILHO (UMA FUNÇÃO) QUE É DISPARADA AUTOMATICAMENTE MEDIANTE ALGUMAS AÇÕES NA TABELA (INSERT DELETE UPDATE)
