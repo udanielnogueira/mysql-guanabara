@@ -12,7 +12,7 @@ select * from cursos where nome like '%a';
 select * from cursos where nome like '%a%';
 
 # TEM A EM LUGAR NENHUM
-# TAMBÉM PEGARIA UM A COM ACENTO
+# TAMBÉM NÃO EXIBIRÁ A COM ACENTO
 select * from cursos where nome not like '%a%';
 
 # LETRA O SEJA A PENÚLTIMA LETRA

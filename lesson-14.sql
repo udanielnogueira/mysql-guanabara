@@ -130,3 +130,26 @@ select nome, nascimento, nacionalidade from usuarios where nacionalidade = 'Bras
 select nome, peso, nacionalidade from usuarios where nacionalidade = 'Brasil' and peso in (50, 51, 53) order by nome asc;
 
 delete from usuarios where id in (5);
+
+# OPERADOR LIKE E WILDCARDS
+# ACOMPANHA A CLÁUSULA WHERE PARA ESPECIFICAR UM DETERMINADO PADRÃO
+# EXISTEM DOIS WILDCARDS (CORINGAS) USADOS EM CONJUNTO COM O OPERADOR LIKE % _
+# % REPRESENTA NENHUM UM OU VÁRIOS CARACATERES
+# _ REPRESENTA UM ÚNICO CARACTER
+
+select * from cursos where nome like 'p%'; # COMEÇAM COM P
+select * from cursos where nome like '%a'; # TERMINAM COM A
+select * from cursos where nome like '%a%'; # TEM A EM QUALQUER LUGAR
+select * from cursos where nome not like '%a%'; # TEM A EM LUGAR NENHUM E TAMBÉM NÃO EXIBIRÁ A COM ACENTO
+select * from cursos where nome like '%o_'; # LETRA O SEJA A PENÚLTIMA LETRA E UNDERLINE SIGNIFICA A OBRIGAÇÃO DE UM CARACTER QUALQUER
+select * from usuarios where nome like '%silva%'; # TEM SILVA NO MEIO DO NOME
+select * from usuarios where nome like '%da silva'; # TEM DA SILVA NO FINAL DO NOME
+
+# DISTINCT 
+# PARA EXIBIR REGISTROS DISTINTOS
+select distinct nacionalidade from usuarios order by nacionalidade; 
+
+# COUNT
+# PARA EXIBIR CONTAGENS
+select count(*) from cursos;
+select count(*) as 'Cursos acima de 30 aulas' from cursos where qtdaulas >= 30;
