@@ -105,6 +105,10 @@ set nome = 'MySQL', qtdaulas = '17'
 where id = '1'
 limit 1;
 
+select * 
+from cursos 
+limit 2;
+
 # APAGA REGISTRO
 # WHERE ANO = 2019 PODERIA APAGAR VÁRIOS
 delete from pessoas where id = '1';
@@ -153,3 +157,20 @@ select distinct nacionalidade from usuarios order by nacionalidade;
 # PARA EXIBIR CONTAGENS
 select count(*) from cursos;
 select count(*) as 'Cursos acima de 30 aulas' from cursos where qtdaulas >= 30;
+select count(qtdaulas) as 'Cursos acima de 30 aulas' from cursos where qtdaulas >= 30;
+
+# FUNÇÕES
+# TAMBÉM CHAMADAS DE FUNÇÕES DE AGREGAÇÃO
+select min(qtdaulas) from cursos;
+select max(qtdaulas) from cursos;
+select sum(qtdaulas) from cursos;
+select avg(qtdaulas) from cursos;
+select max(peso) as MaiorPeso from usuarios where nacionalidade = 'Brasil';
+
+# GROUP BY
+# CRIANDO AGRUPAMENTOS
+# REPARE O USO DOS APELIDOS
+select nacionalidade as Países, count(*) as quantidade from usuarios group by nacionalidade order by nacionalidade asc;
+
+select * from cursos;
+select * from usuarios;
