@@ -1,3 +1,3 @@
-# MySQL.CursoEmVideo
+# mysql-guanabara
 
-MySQL based on "Curso em Vídeo" classes.
+Estudo de MySQL nas aulas do Curso em Vídeo produzidas pelo Gustavo Guanabara.
